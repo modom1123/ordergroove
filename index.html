@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mallory Odom — Ordergroove</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,800;1,9..144,400&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #0b1222;
+  --ink-soft: #1e2a3a;
+  --ink-muted: #5a6a7e;
+  --paper: #f4f6f8;
+  --paper-warm: #e8ecf0;
+  --accent: #00c2b2;
+  --accent-light: #33d4c6;
+  --accent-glow: rgba(0, 194, 178, 0.10);
+  --midnight: #0d1628;
+  --midnight-soft: #141e33;
+  --serif: 'Fraunces', serif;
+  --sans: 'Outfit', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+/* ─── REVEAL ANIMATION ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 40px 60px;
+  position: relative;
+  background: var(--midnight);
+  color: var(--paper);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 80vw;
+  height: 80vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,194,178,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.2s forwards;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  max-width: 800px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.4s forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent-light);
+}
+
+.hero-sub {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 560px;
+  color: #a0a6ae;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.6s forwards;
+}
+
+.hero-sub strong {
+  color: var(--paper);
+  font-weight: 500;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  animation: fadeUp 0.6s 1s forwards;
+}
+
+.hero-scroll span {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--ink-muted);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTIONS ─── */
+.section {
+  padding: 100px 40px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.section-num {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-num::after {
+  content: '';
+  flex: 1;
+  max-width: 60px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+}
+
+.section h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+}
+
+.section h2 em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.section p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin-bottom: 20px;
+}
+
+.section p strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ─── METRICS ROW ─── */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.metric {
+  background: var(--paper-warm);
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.metric-val {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.metric-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted);
+  line-height: 1.4;
+}
+
+/* ─── WSJF FRAMEWORK ─── */
+.framework-wrap {
+  margin: 48px 0;
+}
+
+.framework-intro {
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin-bottom: 20px;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.framework-intro strong {
+  color: var(--ink);
+}
+
+.framework-tabs {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 0;
+  overflow-x: auto;
+}
+
+.framework-tab {
+  padding: 10px 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  white-space: nowrap;
+  background: var(--paper-warm);
+  color: var(--ink-muted);
+}
+
+.framework-tab:first-child { border-radius: 10px 0 0 0; }
+.framework-tab:last-child { border-radius: 0 10px 0 0; }
+
+.framework-tab:hover { color: var(--ink); }
+
+.framework-tab.active {
+  background: var(--midnight);
+  color: var(--accent);
+}
+
+.framework-table-wrap {
+  background: var(--midnight);
+  border-radius: 0 0 12px 12px;
+  padding: 4px 0 8px;
+  overflow-x: auto;
+}
+
+.framework-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 600px;
+}
+
+.framework-table thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.framework-table thead th.num {
+  text-align: center;
+}
+
+.framework-table tbody tr {
+  transition: background 0.15s;
+}
+
+.framework-table tbody tr:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.framework-table tbody td {
+  padding: 10px 14px;
+  color: #c0c6d0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  vertical-align: middle;
+}
+
+.framework-table tbody td.num {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.framework-table .rank {
+  color: var(--accent);
+  font-weight: 600;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.framework-table .feature-name {
+  font-weight: 500;
+  color: var(--paper);
+}
+
+.framework-table .wsjf-val {
+  font-family: var(--mono);
+  font-weight: 600;
+  color: var(--accent-light);
+}
+
+.team-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.team-pill {
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.02em;
+}
+
+.team-pill.eng { background: rgba(99,140,255,0.15); color: #8ab4ff; }
+.team-pill.cs { background: rgba(0,194,178,0.15); color: #33d4c6; }
+.team-pill.data { background: rgba(168,130,255,0.15); color: #b9a0ff; }
+.team-pill.gtm { background: rgba(255,180,100,0.15); color: #ffc080; }
+.team-pill.design { background: rgba(255,130,170,0.15); color: #ff9eb8; }
+.team-pill.ops { background: rgba(0,194,178,0.10); color: #33d4c6; }
+
+.overlap-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--accent);
+  background: rgba(0,194,178,0.08);
+  padding: 2px 7px;
+  border-radius: 8px;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+.quarter-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+.framework-note {
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-top: 16px;
+  max-width: 640px;
+}
+
+/* ─── ROADMAP DIAGRAM ─── */
+.roadmap-wrap {
+  margin: 48px 0 20px;
+  position: relative;
+}
+
+.roadmap-lifecycle {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.roadmap-stage {
+  flex: 1;
+  cursor: pointer;
+  border: none;
+  background: var(--midnight);
+  color: var(--paper);
+  padding: 20px 16px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s;
+  font-family: var(--sans);
+}
+
+.roadmap-stage:first-child {
+  border-radius: 12px 0 0 0;
+}
+.roadmap-stage:last-child {
+  border-radius: 0 12px 0 0;
+}
+
+.roadmap-stage:hover, .roadmap-stage.active {
+  background: var(--accent);
+}
+
+.roadmap-stage-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 4px;
+}
+
+.roadmap-stage.active .roadmap-stage-label {
+  opacity: 1;
+}
+
+.roadmap-stage-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.roadmap-detail {
+  background: var(--midnight-soft);
+  border-radius: 0 0 12px 12px;
+  padding: 32px;
+  color: var(--paper);
+  min-height: 200px;
+}
+
+.roadmap-detail-header {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 16px;
+}
+
+.roadmap-stakeholders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.roadmap-pill {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #c8cdd4;
+}
+
+.roadmap-pill.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.roadmap-questions {
+  list-style: none;
+  padding: 0;
+}
+
+.roadmap-questions li {
+  font-size: 14px;
+  color: #a0a6ae;
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.roadmap-questions li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent-light);
+}
+
+.roadmap-caption {
+  font-size: 13px;
+  color: var(--ink-muted);
+  font-style: italic;
+  margin-top: 16px;
+  max-width: 640px;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.divider hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--paper-warm), transparent);
+}
+
+/* ─── RULES → AGENTS COMPARISON ─── */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 48px 0 20px;
+}
+
+@media (max-width: 700px) {
+  .compare-grid { grid-template-columns: 1fr; }
+}
+
+.compare-col {
+  border-radius: 14px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.compare-col.rules {
+  background: var(--paper-warm);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.compare-col.agents {
+  background: var(--midnight);
+  color: var(--paper);
+}
+
+.compare-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.rules .compare-tag {
+  background: rgba(0,0,0,0.06);
+  color: var(--ink-muted);
+}
+
+.agents .compare-tag {
+  background: var(--accent);
+  color: white;
+}
+
+.compare-col h3 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.compare-context {
+  font-size: 13px;
+  color: var(--ink-muted);
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.agents .compare-context {
+  color: #7a8290;
+}
+
+.flow-steps {
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+.flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.flow-step:last-child { margin-bottom: 0; }
+
+.flow-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.rules .flow-icon {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.agents .flow-icon {
+  background: rgba(0,194,178,0.15);
+}
+
+.flow-step::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 36px;
+  bottom: -20px;
+  width: 1px;
+}
+
+.flow-step:last-child::before { display: none; }
+
+.rules .flow-step::before {
+  background: rgba(0,0,0,0.08);
+}
+
+.agents .flow-step::before {
+  background: rgba(255,255,255,0.08);
+}
+
+.flow-text strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.agents .flow-text strong {
+  color: var(--paper);
+}
+
+.flow-text span {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.rules .flow-text span { color: var(--ink-muted); }
+.agents .flow-text span { color: #7a8290; }
+
+.compare-bridge {
+  background: var(--accent-glow);
+  border: 1px solid rgba(0,194,178,0.2);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin: 0 0 20px;
+}
+
+.compare-bridge p {
+  max-width: 100%;
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.compare-bridge strong {
+  color: var(--accent);
+}
+
+/* ─── WHY SECTION ─── */
+.why-section {
+  background: var(--midnight);
+  color: var(--paper);
+  padding: 100px 40px;
+}
+
+.why-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.why-section .section-num {
+  color: var(--accent-light);
+}
+
+.why-section .section-num::after {
+  background: var(--accent-light);
+}
+
+.why-section h2 {
+  color: var(--paper);
+}
+
+.why-section p {
+  color: #a0a6ae;
+  max-width: 640px;
+}
+
+.why-section p strong {
+  color: var(--paper);
+}
+
+.why-threads {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.why-thread {
+  padding: 24px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.why-thread-icon {
+  font-size: 14px;
+  color: var(--accent);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.why-thread-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.why-thread h4 {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.why-thread p {
+  font-size: 13px;
+  color: #7a8290;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ─── CTA ─── */
+.cta-row {
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+
+.cta-btn.primary {
+  background: var(--accent);
+  color: white;
+  border: none;
+}
+
+.cta-btn.primary:hover {
+  background: var(--accent-light);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0,194,178,0.25);
+}
+
+.cta-btn.secondary {
+  background: transparent;
+  color: #a0a6ae;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.cta-btn.secondary:hover {
+  color: var(--paper);
+  border-color: rgba(255,255,255,0.3);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 40px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-muted);
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .hero { padding: 60px 24px 40px; }
+  .section { padding: 60px 24px; }
+  .why-section { padding: 60px 24px; }
+  .metrics { grid-template-columns: 1fr 1fr; }
+  .roadmap-lifecycle { flex-direction: column; gap: 2px; }
+  .roadmap-stage:first-child { border-radius: 12px 12px 0 0; }
+  .roadmap-stage:last-child { border-radius: 0; }
+  .roadmap-stage-name { font-size: 15px; }
+  .compare-grid { grid-template-columns: 1fr; }
+  .cta-row { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-eyebrow">Mallory Odom · Senior Product Manager</div>
+  <h1>From Rules<br>to <em>Relationships</em></h1>
+  <p class="hero-sub">
+    I've built the subscription pricing architecture, shipped AI-driven personalization at scale, and created the cross-functional alignment systems that turn platform chaos into shared roadmaps. <strong>Here's how that maps to Ordergroove.</strong>
+  </p>
+  <div class="hero-scroll"><span></span> Scroll to explore</div>
+</section>
+
+<!-- ═══════════ SECTION 1: ALIGNMENT ═══════════ -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-num">01 — The Alignment Problem</div>
+    <h2>Roadmap clarity is the <em>prerequisite</em></h2>
+    <p>
+      The hardest part of platform PM at a scaling company isn't the product decisions — it's getting Sales, CS, and Engineering to agree on <strong>which problems to solve first</strong>. When cross-functional alignment is uneven, you get roadmap churn, shifting priorities, and teams pulling in different directions.
+    </p>
+    <p>
+      At IMPLAN, I walked into exactly this: no shared platform, no common prioritization framework, competing stakeholder needs across the CEO's office, engineering, and internal operations. I built the operational backbone — a WSJF-prioritized roadmap informed by behavioral analytics and stakeholder input — that gave every team a shared frame of reference.
+    </p>
+  </div>
+
+  <div class="metrics reveal">
+    <div class="metric">
+      <div class="metric-val">42%</div>
+      <div class="metric-label">Reduction in time-to-value via Pendo behavioral analytics</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">60%</div>
+      <div class="metric-label">Increase in feature discovery across user segments</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">0→1</div>
+      <div class="metric-label">Internal platform built from greenfield with shared prioritization</div>
+    </div>
+    <div class="metric">
+      <div class="metric-val">$30M</div>
+      <div class="metric-label">Product line ownership at Leadventure (30% of company revenue)</div>
+    </div>
+  </div>
+
+  <!-- WSJF FRAMEWORK EXAMPLE -->
+  <div class="framework-wrap reveal">
+    <p class="framework-intro">
+      <strong>Here's what that framework looks like in practice.</strong> A recent cross-functional roadmap I built uses WSJF scoring to create one master priority list — then filters it by team so each group sees their own ranked view while understanding where their work intersects with others. Click the team tabs to see how the same initiatives re-rank from different perspectives.
+    </p>
+    <div class="framework-tabs" id="framework-tabs"></div>
+    <div class="framework-table-wrap">
+      <table class="framework-table">
+        <thead>
+          <tr>
+            <th style="width:40px" class="num">#</th>
+            <th>Initiative</th>
+            <th class="num" style="width:60px">WSJF</th>
+            <th style="width:60px">Quarter</th>
+            <th>Teams Involved</th>
+            <th class="num" style="width:80px">Rev. Impact</th>
+          </tr>
+        </thead>
+        <tbody id="framework-body"></tbody>
+      </table>
+    </div>
+    <p class="framework-note">↑ Each team gets their own prioritized view of the same master roadmap — creating shared visibility into cross-functional dependencies and trade-offs. Built with WSJF scoring (CoD ÷ Job Size) to make prioritization transparent and defensible.</p>
+  </div>
+
+  <!-- ROADMAP DIAGRAM -->
+  <div class="roadmap-wrap reveal">
+    <div class="roadmap-lifecycle" id="roadmap">
+      <button class="roadmap-stage active" data-stage="onboard" onclick="showStage('onboard')">
+        <div class="roadmap-stage-label">Stage 1</div>
+        <div class="roadmap-stage-name">Onboard</div>
+      </button>
+      <button class="roadmap-stage" data-stage="activate" onclick="showStage('activate')">
+        <div class="roadmap-stage-label">Stage 2</div>
+        <div class="roadmap-stage-name">Activate</div>
+      </button>
+      <button class="roadmap-stage" data-stage="retain" onclick="showStage('retain')">
+        <div class="roadmap-stage-label">Stage 3</div>
+        <div class="roadmap-stage-name">Retain</div>
+      </button>
+      <button class="roadmap-stage" data-stage="expand" onclick="showStage('expand')">
+        <div class="roadmap-stage-label">Stage 4</div>
+        <div class="roadmap-stage-name">Expand</div>
+      </button>
+    </div>
+
+    <div class="roadmap-detail" id="roadmap-detail">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <p class="roadmap-caption reveal">
+    ↑ Each lifecycle stage has different primary stakeholders and competing priorities. The PM's job is building the shared framework that turns these inputs into a sequenced, outcome-driven roadmap — not arbitrating between teams, but making the trade-offs visible.
+  </p>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ═══════════ SECTION 2: RULES → AGENTS ═══════════ -->
+<section class="section">
+  <div class="reveal">
+    <div class="section-num">02 — Rules → Agents</div>
+    <h2>Same PM problem.<br><em>Different execution layer.</em></h2>
+    <p>
+      Whether the triggering logic is a rules engine or an ML model, the product manager's ownership is identical: define the outcome, identify intervention points, design what success looks like, and measure impact. I've built the rule-based version. The Frontier roadmap is the evolution.
+    </p>
+  </div>
+
+  <div class="compare-grid reveal">
+    <!-- LEFT: Rules -->
+    <div class="compare-col rules">
+      <div class="compare-tag">What I've built</div>
+      <h3>Rule-Based Interventions</h3>
+      <div class="compare-context">IMPLAN · Pendo + Behavioral Analytics</div>
+      <ul class="flow-steps">
+        <li class="flow-step">
+          <div class="flow-icon">◎</div>
+          <div class="flow-text">
+            <strong>Segment</strong>
+            <span>Define user cohorts by vertical, role, and behavior milestones</span>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon">⧫</div>
+          <div class="flow-text">
+            <strong>Trigger</strong>
+            <span>Set conditions: "when user in segment X completes action Y, fire guide Z"</span>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon">▸</div>
+          <div class="flow-text">
+            <strong>Act</strong>
+            <span>Deliver the predefined intervention — walkthrough, tooltip, prompt</span>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon">◉</div>
+          <div class="flow-text">
+            <strong>Measure</strong>
+            <span>Track outcome against baseline — 42% TTV reduction, 60% feature discovery lift</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: Agents -->
+    <div class="compare-col agents">
+      <div class="compare-tag">Where Frontier goes</div>
+      <h3>Autonomous Agents</h3>
+      <div class="compare-context">Ordergroove · Anticipate AI + Frontier</div>
+      <ul class="flow-steps">
+        <li class="flow-step">
+          <div class="flow-icon">◎</div>
+          <div class="flow-text">
+            <strong>Observe</strong>
+            <span>Ingest order cadence, consumption patterns, engagement signals in real-time</span>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon">⧫</div>
+          <div class="flow-text">
+            <strong>Reason</strong>
+            <span>Model determines this subscriber is at overstock risk — no predefined rule</span>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon">▸</div>
+          <div class="flow-text">
+            <strong>Act</strong>
+            <span>Agent selects the intervention: skip prompt, swap suggestion, frequency adjustment</span>
+          </div>
+        </li>
+        <li class="flow-step">
+          <div class="flow-icon">◉</div>
+          <div class="flow-text">
+            <strong>Learn</strong>
+            <span>Outcomes feed back into the model — the system improves without new PM rules</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="compare-bridge reveal">
+    <p>
+      <strong>The bridge:</strong> In both models, the PM defines <em>why</em> the intervention exists and <em>how</em> we know it worked. The difference is whether I configure the trigger logic or partner with ML engineering to train the model that decides. The product thinking — outcome definition, user journey mapping, success metrics, iteration loops — is the same muscle. The Frontier roadmap is the evolution I'm ready to drive.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ SECTION 3: WHY THIS ROLE ═══════════ -->
+<section class="why-section">
+  <div class="why-inner">
+    <div class="reveal">
+      <div class="section-num">03 — Why Ordergroove</div>
+      <h2>The timing is <em>right</em></h2>
+      <p>
+        Ordergroove is at an inflection point: Frontier just launched, the AI roadmap is moving from prediction to autonomous action, and the merchant growth mandate needs someone who's built the alignment systems to scale it. That's the intersection where my experience compounds.
+      </p>
+    </div>
+
+    <div class="why-threads reveal">
+      <div class="why-thread">
+        <div class="why-thread-header">
+          <div class="why-thread-icon">◆</div>
+          <h4>Subscription Architecture</h4>
+        </div>
+        <p>I defined tiered subscription packages from scratch at IMPLAN — pricing strategy, packaging, lifecycle design. Not inherited; originated.</p>
+      </div>
+      <div class="why-thread">
+        <div class="why-thread-header">
+          <div class="why-thread-icon">◆</div>
+          <h4>AI Personalization, Shipped</h4>
+        </div>
+        <p>Led AI-driven onboarding at IMPLAN and ML personalization at Leadventure — not proof-of-concept, production systems with measurable retention impact.</p>
+      </div>
+      <div class="why-thread">
+        <div class="why-thread-header">
+          <div class="why-thread-icon">◆</div>
+          <h4>Dual Installed Base</h4>
+        </div>
+        <p>Managed legacy and modern platform cohorts simultaneously at Leadventure — the same challenge Ordergroove faces across hundreds of merchants at different maturity levels.</p>
+      </div>
+      <div class="why-thread">
+        <div class="why-thread-header">
+          <div class="why-thread-icon">◆</div>
+          <h4>Catalog Fluency</h4>
+        </div>
+        <p>I manage a SKU-level product catalog every day — frame style, color, size, lens type, insurance eligibility. I know what breaks when the catalog system doesn't work.</p>
+      </div>
+    </div>
+
+    <div class="cta-row reveal">
+      <a href="https://modom1123.github.io/poetential/M_Odom_Resume_3.26.pdf" class="cta-btn primary" target="_blank">View Resume ↗</a>
+      <a href="mailto:mallory.odom@gmail.com" class="cta-btn secondary">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Mallory Odom · Portland, OR · <a href="https://modom1123.github.io/poetential/">poetential.dev</a></p>
+</footer>
+
+<script>
+// ─── SCROLL REVEAL ───
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15 });
+revealEls.forEach(el => observer.observe(el));
+
+// ─── ROADMAP INTERACTIVE ───
+const stageData = {
+  onboard: {
+    header: 'Onboarding — "How do merchants get started and see value?"',
+    stakeholders: [
+      { label: 'Customer Success', primary: true },
+      { label: 'Engineering', primary: true },
+      { label: 'Sales', primary: false },
+      { label: 'Operations', primary: false }
+    ],
+    questions: [
+      'What does the first 48 hours look like for a new merchant?',
+      'Where do merchants drop off before seeing subscription revenue?',
+      'What can we automate vs. what requires white-glove support?',
+      'How do we reduce implementation complexity without sacrificing flexibility?'
+    ]
+  },
+  activate: {
+    header: 'Activation — "How do merchants convert first subscribers?"',
+    stakeholders: [
+      { label: 'Data / ML', primary: true },
+      { label: 'Design', primary: true },
+      { label: 'Customer Success', primary: false },
+      { label: 'GTM', primary: false }
+    ],
+    questions: [
+      'Which enrollment surfaces drive the highest conversion?',
+      'What incentive structures move the needle without eroding margin?',
+      'How do we personalize the enrollment experience per merchant vertical?',
+      'Where does AI surface the right offer at the right moment?'
+    ]
+  },
+  retain: {
+    header: 'Retention — "How do we reduce churn at every signal?"',
+    stakeholders: [
+      { label: 'Data / ML', primary: true },
+      { label: 'Engineering', primary: true },
+      { label: 'Customer Success', primary: false },
+      { label: 'Design', primary: false }
+    ],
+    questions: [
+      'Which churn signals are predictive vs. reactive?',
+      'How does Anticipate AI prioritize intervention types — skip, swap, pause?',
+      'What does the cancel flow decision tree look like, and where do we lose saves?',
+      'How do we measure whether we delayed churn vs. actually prevented it?'
+    ]
+  },
+  expand: {
+    header: 'Expansion — "How do merchants grow subscription revenue?"',
+    stakeholders: [
+      { label: 'GTM / Sales', primary: true },
+      { label: 'Data / ML', primary: true },
+      { label: 'Customer Success', primary: false },
+      { label: 'Engineering', primary: false }
+    ],
+    questions: [
+      'What upsell/cross-sell patterns drive AOV increase without fatigue?',
+      'How do we help merchants add new subscription products or bundles?',
+      'Where does dynamic pricing optimization fit in the lifecycle?',
+      'What does the path from single-product subscription to membership look like?'
+    ]
+  }
+};
+
+function showStage(key) {
+  document.querySelectorAll('.roadmap-stage').forEach(s => s.classList.remove('active'));
+  document.querySelector(`[data-stage="${key}"]`).classList.add('active');
+  
+  const d = stageData[key];
+  const detail = document.getElementById('roadmap-detail');
+  
+  detail.innerHTML = `
+    <div class="roadmap-detail-header">${d.header}</div>
+    <div class="roadmap-stakeholders">
+      ${d.stakeholders.map(s => `<span class="roadmap-pill${s.primary ? ' primary' : ''}">${s.label}</span>`).join('')}
+    </div>
+    <ul class="roadmap-questions">
+      ${d.questions.map(q => `<li>${q}</li>`).join('')}
+    </ul>
+  `;
+}
+
+// Initialize
+showStage('onboard');
+
+// ─── WSJF FRAMEWORK INTERACTIVE ───
+const initiatives = [
+  { name: 'Subscription Enrollment Engine Rebuild', wsjf: 14.5, q: 'Q1', teams: ['eng','data','design'], rev: '2.8%' },
+  { name: 'Anticipate AI — Churn Prediction v2', wsjf: 14.0, q: 'Q1', teams: ['data','eng','cs'], rev: '2.6%' },
+  { name: 'Merchant Onboarding Self-Service', wsjf: 13.7, q: 'Q1', teams: ['eng','cs','design'], rev: '2.3%' },
+  { name: 'Cancel Flow Optimization', wsjf: 13.0, q: 'Q2', teams: ['data','design','cs'], rev: '2.2%' },
+  { name: 'Promotion Rules Engine', wsjf: 13.0, q: 'Q2', teams: ['eng','gtm','cs'], rev: '1.9%' },
+  { name: 'Subscription Analytics Dashboard', wsjf: 12.0, q: 'Q2', teams: ['data','eng','gtm'], rev: '1.7%' },
+  { name: 'Dynamic Frequency Recommendations', wsjf: 10.5, q: 'Q3', teams: ['data','eng'], rev: '1.5%' },
+  { name: 'SKU Swap & Bundle Builder', wsjf: 10.0, q: 'Q3', teams: ['eng','design','gtm'], rev: '1.4%' },
+  { name: 'Merchant Health Scoring', wsjf: 9.7, q: 'Q3', teams: ['data','cs','gtm'], rev: '1.3%' },
+  { name: 'Multi-Platform Integration Framework', wsjf: 9.0, q: 'Q3', teams: ['eng','ops'], rev: '1.1%' },
+  { name: 'Subscriber Lifetime Value Forecasting', wsjf: 8.5, q: 'Q4', teams: ['data','gtm'], rev: '1.0%' },
+  { name: 'Personalized Incentive Engine', wsjf: 8.0, q: 'Q4', teams: ['data','eng','design'], rev: '0.9%' },
+];
+
+const teamLabels = {
+  all: 'All Initiatives',
+  eng: 'Engineering',
+  cs: 'CS & Ops',
+  data: 'Data / ML',
+  gtm: 'GTM',
+  design: 'Design'
+};
+
+const teamPillLabel = {
+  eng: 'Eng', cs: 'CS', data: 'Data/ML', gtm: 'GTM', design: 'Design', ops: 'Ops'
+};
+
+function renderFramework(filter) {
+  const filtered = filter === 'all'
+    ? initiatives
+    : initiatives.filter(i => i.teams.includes(filter));
+  
+  // Re-sort by WSJF within filtered set
+  const sorted = [...filtered].sort((a, b) => b.wsjf - a.wsjf);
+  
+  const tbody = document.getElementById('framework-body');
+  tbody.innerHTML = sorted.map((item, idx) => {
+    const teamCount = item.teams.length;
+    const pills = item.teams.map(t =>
+      `<span class="team-pill ${t}">${teamPillLabel[t] || t}</span>`
+    ).join('');
+    const overlap = teamCount >= 3
+      ? `<span class="overlap-badge">${teamCount} teams</span>`
+      : '';
+    
+    return `<tr>
+      <td class="num"><span class="rank">${idx + 1}</span></td>
+      <td><span class="feature-name">${item.name}</span>${overlap}</td>
+      <td class="num"><span class="wsjf-val">${item.wsjf}</span></td>
+      <td><span class="quarter-label">${item.q}</span></td>
+      <td><div class="team-pills">${pills}</div></td>
+      <td class="num" style="color:#8ab4ff">${item.rev}</td>
+    </tr>`;
+  }).join('');
+
+  // Update active tab
+  document.querySelectorAll('.framework-tab').forEach(t => {
+    t.classList.toggle('active', t.dataset.team === filter);
+  });
+}
+
+// Build tabs
+const tabsContainer = document.getElementById('framework-tabs');
+Object.entries(teamLabels).forEach(([key, label]) => {
+  const btn = document.createElement('button');
+  btn.className = 'framework-tab' + (key === 'all' ? ' active' : '');
+  btn.textContent = label;
+  btn.dataset.team = key;
+  btn.onclick = () => renderFramework(key);
+  tabsContainer.appendChild(btn);
+});
+
+renderFramework('all');
+</script>
+
+</body>
+</html>
